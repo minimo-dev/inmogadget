@@ -2,16 +2,39 @@
 $client_price = $_GET['client_price'];
 $percent_comission = $_GET['percent_comission'];
 $includes_vat = $_GET['includes_vat'];
+$final_price = $client_price;
+$comission = $final_price * $percent_comission;
+$comission_vat = $comission * 0.21;
+$comission_with_vat = $final_price * $percent_comission;
 
 if($includes_vat==='vat_excluded'){
-    $comission = $client_price * $percent_comission / 100;
+
+    while ($final_price < ($client_price + $comission + $comission_vat)){
+        $final_price += 100;
+        $comission = $final_price * $percent_comission / 100;
+        $comission_vat = $comission*0.21;
+//        echo $final_price . "<br>";
+//        echo $comission . "<br>";
+//        echo $comission_vat . "<br>";
+    }
+    $final_price -= 100;
+    $comission = $final_price * $percent_comission / 100;
     $comission_vat = $comission*0.21;
     $final_price = $client_price + $comission + $comission_vat;
-} else{
-    $comission_with_vat = $client_price * $percent_comission / 100;
-    $final_price = $client_price + $comission_with_vat;
+}
+
+else{
+    while ($final_price < ($client_price + $comission_with_vat)){
+        $final_price += 100;
+        $comission_with_vat = $final_price * $percent_comission / 100;
+//        echo $final_price . "<br>";
+//        echo $comission_with_vat . "<br>";
+    }
+    $final_price -= 100;
+    $comission_with_vat = $final_price * $percent_comission / 100;
     $comission = $comission_with_vat / 1.21;
-    $comission_vat = $comission_with_vat - $comission;
+    $comission_vat = $comission*0.21;
+    $final_price = $client_price + $comission + $comission_vat;
 }
 ?>
 <!doctype html>

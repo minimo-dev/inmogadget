@@ -22,9 +22,9 @@ if($includes_vat==='vat_excluded_neto'){
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>JCalculator Precio Final</title>
+    <title>JCalculator Precio Cliente</title>
 </head>
-<h1>Calculadora de Precio Final</h1>
+<h1>Calculadora de Precio Cliente</h1>
 <p>El precio final es <?=number_format($final_price , 0, ",", ".");?>, la comisión es del <?=$percent_comission?> %
     <?php
     if($includes_vat==='vat_excluded_neto'){
@@ -33,7 +33,7 @@ if($includes_vat==='vat_excluded_neto'){
         echo "incluyendo el IVA.";
     }
     ?>
-<p>El NETO del cliente es <?=number_format($client_net_price, 0, ",", ".");?>
+<p>El precio del cliente es <?=number_format($client_net_price, 0, ",", ".");?>
 <p>La comision neta de la agencia es <?=number_format( $comission , 0, ",", ".");?>
 <p>El IVA de la operación es <?=number_format( $comission_vat , 0, ",", ".");?>
 <p>La comision de la agencia + IVA es <?=number_format( $comission + $comission_vat, 0, ",", ".");?>

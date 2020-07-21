@@ -9,7 +9,7 @@
 </head>
 <body>
 <h1>Calculadora de Precio Final</h1>
-<form action="/precio_final.php" method="get">
+<form action="precio_final.php" method="get">
     <label for="client_price">El cliente quiere:</label>
     <input type="number" id="client_price" name="client_price" step="1000" required><br><br>
     <label for="percent_comission">Porcentaje de Comisión:</label>
@@ -23,7 +23,7 @@
 </form>
 <br><br>
 <h1>Calculadora de Precio Neto del Cliente</h1>
-<form action="/precio_neto.php" method="get">
+<form action="precio_neto.php" method="get">
     <label for="final_price">El precio final es:</label>
     <input type="number" id="final_price" name="final_price" step="1000" required><br><br>
     <label for="percent_comission_neto">Porcentaje de Comisión:</label>
